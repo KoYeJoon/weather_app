@@ -4,7 +4,7 @@ import React from "react";
 // Stateless component
 
 class Weather extends React.Component {
-    //1. class 형태로 변경하여서 cities처럼해서 didMount했을 때 fatch  선택 도시의 날씨 
+    //1. class 형태로 변경하여서 cities처럼해서 didMount했을 때 fetch  선택 도시의 날씨 
 
     //2. react Hook << 검색
     //state, setState
@@ -48,7 +48,7 @@ class Weather extends React.Component {
     const {weather} = this.state;
     const {detailWeather} = this.state;
     const {temperature} = this.state;
-   
+    const celsius = (temperature - 273.15).toFixed(2); // kelvin to celsius
 
     if (weather == ''){
     return (
@@ -66,7 +66,7 @@ class Weather extends React.Component {
       <p> cityName : {city}</p>
       <p> weather : {weather}</p>
       <p> detail Weather : {detailWeather}</p>
-      <p> temperature : {temperature}</p>
+      <p> temperature : {celsius} </p>
     </div>
   );
   }
