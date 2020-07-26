@@ -5,6 +5,7 @@ import './navigation.css';
 // Stateless component
 const Navigation = () => {
   return (
+    <div>
     <ul className="navigation">
       <li>
         <Link to="/">Home</Link>
@@ -19,7 +20,8 @@ const Navigation = () => {
           Cities
         </NavLink>
       </li>
-    </ul>
+      </ul>
+        </div>
   );
 };
 export default Navigation;

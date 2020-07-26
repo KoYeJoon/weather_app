@@ -2,9 +2,11 @@ import React from "react";
 import { Switch, Route, withRouter } from "react-router";
 import CityList from "./CityList";
 import Weather from "./Weather/index";
-// const API_CITIES = "http://localhost:8888/weather-craw.../cities";
-//const API_CITIES = "http://riotkr.mockable.io/weather-crawlers/cities";
+
+
+
 const API_CITIES = "http://localhost:8080/weather-service/available-cities";
+
 
 class Cities extends React.Component {
   state = {
@@ -13,7 +15,7 @@ class Cities extends React.Component {
   componentDidMount() {
     console.log("City component");
     // console.log(this.state.cities);
-    const { cities } = this.state;
+    const { cities} = this.state;
     // console.log(cities);
     const citiesData = fetch(API_CITIES)
       .then((res) => res.json())
@@ -22,10 +24,16 @@ class Cities extends React.Component {
           cities: data,
         });
       });
+
+  
+    
   }
+ 
   render() {
     const { match } = this.props;
-    const { cities } = this.state;
+    const { cities} = this.state;
+
+
     return (
       <div>
         <h1>Cities</h1>
@@ -36,9 +44,17 @@ class Cities extends React.Component {
             path={match.path}
             render={() => <CityList cities={cities} />}
           />
-          <Route path={`${match.path}/:cityName`} component={Weather} />
+                    <Route
+            exact
+            path={match.path}
+            
+          />
+        <Route path={`${match.path}/:cityName`} component={Weather} />
         </Switch>
+
       </div>
+
+
     );
   }
 }
